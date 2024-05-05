@@ -47,3 +47,7 @@ first 8080 is your local machine port while second 8080 is the port inside docke
 #### check running container
 
 > docker-compose ps
+
+#### docker volumes to have live update of local files in docker conatiner
+
+> docker run -p 3000:3000 -v /app/node_modules -v "$(pwd):/app" <container id>
