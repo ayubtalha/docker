@@ -1,65 +1,87 @@
 ### Docker CLI Commands
 
-#### build docker container
+build docker container
 
 > docker build -t ayubtalha/simpleweb .
 
-#### run docker container
+run docker container
 
 > docker run ayubtalha/simpleweb
 
-#### check running container
+check running container
 
 > docker ps
 
-#### stopping the docker
+stopping the docker
 
 > docker stop <container id>
 
-#### define a port
+define a port
 
-first 8080 is your local machine port while second 8080 is the port inside docker
+`first 8080 is your local machine port while second 8080 is the port inside docker`
 
 > docker run -p 8080:8080 ayubtalha/simpleweb
 
-#### startup a shell
+startup a shell
 
 > docker run -it ayubtalha/simpleweb sh
 
 ### Docker Compose Commands
 
-#### run conatiner
+run conatiner
 
 > docker-compose up
 
-#### rebuild the container after changing files
+rebuild the container after changing files
 
 > docker-compose up --build
 
-#### launch in background
+launch in background
 
 > docker-compose up -d
 
-#### stop containers
+stop containers
 
 > docker-compose down
 
-#### check running container
+check running container
 
 > docker-compose ps
 
-#### docker volumes to have live update of local files in docker conatiner
+docker volumes to have live update of local files in docker conatiner
 
-> docker run -p 3000:3000 -v /app/node_modules -v "$(pwd):/app" <container id>
+> docker run -p 3000:3000 -v /app/node_modules -v "$(pwd):/app" 'container-id'
 
-### Kubernetes
+### KUBERNETES
+
+Get a list of pods running in the Kubernetes cluster
 
 > kubectl get pods
 
+Get a list of services running in the Kubernetes cluster
+
 > kubectl get services
+
+Create a pod using the configuration defined in client-pod.yaml file
 
 > kubectl apply -f client-pod.yaml
 
+Create a NodePort service using the configuration defined in client-node-port.yaml file
+
 > kubectl apply -f client-node-port.yaml
 
-> kubectl describe object-type object-name
+Get detailed information about a specific Kubernetes object (replace 'object-type-here' and 'object-name-here' with actual values)
+
+> kubectl describe 'object-type-here' 'object-name-here'
+
+Delete the pod specified in client-pod.yaml file
+
+> kubectl delete -f client-pod.yaml
+
+Get a list of deployments running in the Kubernetes cluster
+
+> kubectl get deployments
+
+Get a detailed list of pods, including additional information such as node name and IP addresses
+
+> kubectl get pods -o wide
