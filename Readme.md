@@ -51,3 +51,15 @@ first 8080 is your local machine port while second 8080 is the port inside docke
 #### docker volumes to have live update of local files in docker conatiner
 
 > docker run -p 3000:3000 -v /app/node_modules -v "$(pwd):/app" <container id>
+
+### Kubernetes
+
+> kubectl get pods
+
+> kubectl get services
+
+> kubectl apply -f client-pod.yaml
+
+> kubectl apply -f client-node-port.yaml
+
+> kubectl describe object-type object-name
