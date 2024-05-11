@@ -1,0 +1,24 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t ayubtalha/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true ayubtalha/react-test npm test
+
+after_success:
+  - docker build -t ayubtalha/multi-client ./client
+  - docker build -t ayubtalha/multi-nginx ./nginx
+  - docker build -t ayubtalha/multi-server ./server
+  - docker build -t ayubtalha/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push ayubtalha/multi-client
+  - docker push ayubtalha/multi-nginx
+  - docker push ayubtalha/multi-server
+  - docker push ayubtalha/multi-worker
