@@ -85,3 +85,7 @@ Get a list of deployments running in the Kubernetes cluster
 Get a detailed list of pods, including additional information such as node name and IP addresses
 
 > kubectl get pods -o wide
+
+Update the image of client-deployment to ayubtalha/multi-client:v1. This is useful for deploying new versions or rolling back to previous versions of the application running in the Kubernetes cluster.
+
+> kubectl set image deployment/client-deployment client=ayubtalha/multi-client:v1
