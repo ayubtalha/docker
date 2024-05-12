@@ -89,3 +89,15 @@ Get a detailed list of pods, including additional information such as node name 
 Update the image of client-deployment to ayubtalha/multi-client:v1. This is useful for deploying new versions or rolling back to previous versions of the application running in the Kubernetes cluster.
 
 > kubectl set image deployment/client-deployment client=ayubtalha/multi-client:v1
+
+delete deployment
+
+> kubectl delete deployment client-deployment
+
+set secrets
+
+> kubectl create secret generic pgpassword --from-literal PGPASSWORD=`<secret-password-here>`
+
+get secrets
+
+> kubectl get secrets
